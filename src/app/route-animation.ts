@@ -76,8 +76,7 @@ export const slideInAnimation =
       ]),
 
     transition(
-      `* => Home, 
-        Contact => *`,
+      `Contact => *`,
       [query(':enter, :leave',
         style({ position: 'fixed', width: '100%' }),
         { optional: true }),

@@ -10,6 +10,13 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    var wrapper = document.querySelector('.wrapper svg')
+    function draw() {
+      wrapper.classList.add('active')
+    }
+
+    setTimeout(draw, 300)
   }
 
 }
