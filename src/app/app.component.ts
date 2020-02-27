@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { slideInAnimation } from './route-animation'
+import { slideInAnimation } from './route-animation';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,7 @@ import { slideInAnimation } from './route-animation'
 })
 
 export class AppComponent {
+
+
   title = 'project';
 }

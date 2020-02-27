@@ -22,7 +22,7 @@ import { ContactComponent } from './contact/contact.component';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
