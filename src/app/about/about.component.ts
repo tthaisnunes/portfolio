@@ -8,16 +8,34 @@ import { Router } from '@angular/router';
 })
 
 export class AboutComponent implements OnInit {
+  age;
 
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    var wrapper = document.querySelector('.wrapper svg')
+    function draw() {
+      wrapper.classList.add('active');
+    }
+    setTimeout(draw, 300);
+
+
+    const actualY = new Date().getFullYear();
+    const actualDate = new Date()
+    const bithY = 1993;
+
+    if (actualDate.getMonth() > 6) {
+      this.age = actualY - bithY;
+    } else {
+      this.age = (actualY - 1) - bithY;
+    }
+  }
 
   @HostListener("window:wheel", ['$event'])
   onWindowWheel(e) {
-    setTimeout(() => this.evListener(e), 500);
+    setTimeout(() => this.evListener(e), 100);
   }
 
   evListener(e) {
@@ -44,5 +62,4 @@ export class AboutComponent implements OnInit {
 
     document.addEventListener("wheel", handler, false)
   }
-
 }
