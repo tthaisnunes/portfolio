@@ -1,0 +1,10 @@
+@import '../../styles.scss';
+
+section {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 15px;
+  box-sizing: border-box;
+  background: $yellow;
+
+}

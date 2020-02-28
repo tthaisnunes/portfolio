@@ -15,11 +15,28 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
   }
 
-  // @HostListener('scroll', ['$event'])
-  // onScroll(event: any) {
-  //   if (event.target.offsetHeight + Math.round(event.target.scrollTop) == event.target.scrollHeight) {
-  //     this.router.navigate(['/projects']);
-  //   }
-  // }
+  @HostListener("window:wheel", ['$event'])
+  onWindowWheel(e) {
+    setTimeout(() => this.evListener(e), 500);
+  }
+
+  evListener(e) {
+    const _this = this;
+    var handler = function (e) {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const pos = scrollHeight - clientHeight;
+
+      if (document.documentElement.scrollTop == 0) {
+        if (e.deltaY < 0) {
+          document.removeEventListener("wheel", handler, false)
+          _this.router.navigate(['/projects']);
+        }
+      }
+
+    }
+
+    document.addEventListener("wheel", handler, false)
+  }
 
 }

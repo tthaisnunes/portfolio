@@ -29,17 +29,27 @@ export class HomeComponent implements OnInit {
   }
 
   @HostListener("window:wheel", ['$event'])
-  onWindowWheel(event) {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight;
-    const pos = scrollHeight - clientHeight;
-    
-    if (Math.round(document.documentElement.scrollTop) == pos) {
-      if (event.deltaY > 0) {
-        // scrolling down
-        this.router.navigate(['/about']);
+  onWindowWheel(e) {
+    setTimeout(() => this.evListener(e), 500);
+  }
+
+  evListener(e) {
+    const _this = this;
+    var handler = function (e) {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const pos = scrollHeight - clientHeight;
+
+      if (Math.round(document.documentElement.scrollTop) == pos) {
+        if (e.deltaY > 0) {
+          document.removeEventListener("wheel", handler, false)
+          _this.router.navigate(['/about']);
+        }
       }
+
     }
+
+    document.addEventListener("wheel", handler, false)
   }
 
 
